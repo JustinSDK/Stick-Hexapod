@@ -17,11 +17,16 @@ void setup() {
 
 void loop() {
   upTest(1);
-  clockWiseTest(1);  
-  clockWiseTest(-1);
-  forerakeTest(1);
-  forerakeTest(-1);
-  upTest(-1);
+  clockwiseTest(1);  
+  for(int i = 0; i < 45; i += 2) {
+      leg1_1Clockwise(2);
+      updateServos();
+  }
+  
+//  clockWiseTest(-1);
+//  forerakeTest(1);
+//  forerakeTest(-1);
+//  upTest(-1);
 }
 
 void initServos() {
@@ -42,19 +47,19 @@ void updateServos() {
   }
 }
 
-void leg1_1ClockWise(int deg) {
+void leg1_1Clockwise(int deg) {
   degs[3][0] += deg;
 }
 
-void leg2_1ClockWise(int deg) {
+void leg2_1Clockwise(int deg) {
   degs[2][0] += deg;
 }
 
-void leg3_1ClockWise(int deg) {
+void leg3_1Clockwise(int deg) {
   degs[0][0] += deg;
 }
 
-void leg4_1ClockWise(int deg) {
+void leg4_1Clockwise(int deg) {
   degs[1][0] += deg;
 }
 
@@ -98,36 +103,36 @@ void upTest(int deg) {
   }  
 }
 
-void clockWiseTest(int deg) {
+void clockwiseTest(int deg) {
   for(int i = 0; i < 45; i += 1) {
-    leg1_1ClockWise(deg);
-    leg2_1ClockWise(deg);
-    leg3_1ClockWise(deg);
-    leg4_1ClockWise(deg);
+    leg1_1Clockwise(deg);
+    leg2_1Clockwise(deg);
+    leg3_1Clockwise(deg);
+    leg4_1Clockwise(deg);
     updateServos();
   }
   for(int i = 0; i < 45; i += 1) {
-    leg1_1ClockWise(-deg);
-    leg2_1ClockWise(-deg);
-    leg3_1ClockWise(-deg);
-    leg4_1ClockWise(-deg);
+    leg1_1Clockwise(-deg);
+    leg2_1Clockwise(-deg);
+    leg3_1Clockwise(-deg);
+    leg4_1Clockwise(-deg);
     updateServos();    
   }  
 }
 
 void forerakeTest(int deg) {
   for(int i = 0; i < 30; i += 1) {
-    leg1_1ClockWise(deg);
-    leg2_1ClockWise(deg);
-    leg3_1ClockWise(-deg);
-    leg4_1ClockWise(-deg);
+    leg1_1Clockwise(deg);
+    leg2_1Clockwise(deg);
+    leg3_1Clockwise(-deg);
+    leg4_1Clockwise(-deg);
     updateServos();    
   }
   for(int i = 0; i < 30; i += 1) {
-    leg1_1ClockWise(-deg);
-    leg2_1ClockWise(-deg);
-    leg3_1ClockWise(deg);
-    leg4_1ClockWise(deg);
+    leg1_1Clockwise(-deg);
+    leg2_1Clockwise(-deg);
+    leg3_1Clockwise(deg);
+    leg4_1Clockwise(deg);
     updateServos();    
   }    
 }
