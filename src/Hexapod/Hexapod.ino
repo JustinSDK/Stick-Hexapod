@@ -3,10 +3,10 @@
 Servo servos[4][3];
 
 int degs[4][3] = {
-  {90, 180, 180}, // LEG3
-  {90, 180, 180}, // LEG4
-  {90, 0,   0},   // LEG2
-  {90, 0,   0}    // LEG1 
+  {90, 180, 180}, // LEG3 - Servo 1, 2, 3
+  {90, 180, 180}, // LEG4 - Servo 1, 2, 3
+  {90, 0,   0},   // LEG2 - Servo 1, 2, 3
+  {90, 0,   0}    // LEG1 - Servo 1, 2, 3
 };
 
 int delayMillis = 1;
