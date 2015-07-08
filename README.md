@@ -1,4 +1,4 @@
-# Stick-HexaPod
+# Stick-Hexapod
 
 破爛補丁四足蜘蛛機器人
 
