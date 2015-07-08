@@ -13,20 +13,26 @@ int delayMillis = 1;
 
 void setup() {
   initServos();  
+  upTest(1);
 }
 
 void loop() {
-  upTest(1);
-  clockwiseTest(1);  
-  for(int i = 0; i < 45; i += 2) {
-      leg1_1Clockwise(2);
-      updateServos();
-  }
-  
 //  clockWiseTest(-1);
 //  forerakeTest(1);
 //  forerakeTest(-1);
 //  upTest(-1);
+
+  turnRightTest(1);
+  turnRightTest(1);
+  turnRightTest(1);
+  turnRightTest(1);
+  turnRightTest(1);
+
+  turnRightTest(-1);
+  turnRightTest(-1);
+  turnRightTest(-1);
+  turnRightTest(-1);
+  turnRightTest(-1);  
 }
 
 void initServos() {
@@ -104,14 +110,14 @@ void upTest(int deg) {
 }
 
 void clockwiseTest(int deg) {
-  for(int i = 0; i < 45; i += 1) {
+  for(int i = 0; i < 45; i++) {
     leg1_1Clockwise(deg);
     leg2_1Clockwise(deg);
     leg3_1Clockwise(deg);
     leg4_1Clockwise(deg);
     updateServos();
   }
-  for(int i = 0; i < 45; i += 1) {
+  for(int i = 0; i < 45; i++) {
     leg1_1Clockwise(-deg);
     leg2_1Clockwise(-deg);
     leg3_1Clockwise(-deg);
@@ -121,19 +127,47 @@ void clockwiseTest(int deg) {
 }
 
 void forerakeTest(int deg) {
-  for(int i = 0; i < 30; i += 1) {
+  for(int i = 0; i < 30; i++) {
     leg1_1Clockwise(deg);
     leg2_1Clockwise(deg);
     leg3_1Clockwise(-deg);
     leg4_1Clockwise(-deg);
     updateServos();    
   }
-  for(int i = 0; i < 30; i += 1) {
+  for(int i = 0; i < 30; i++) {
     leg1_1Clockwise(-deg);
     leg2_1Clockwise(-deg);
     leg3_1Clockwise(deg);
     leg4_1Clockwise(deg);
     updateServos();    
   }    
+}
+
+void turnRightTest(int deg) {
+  for(int i = 0; i < 45; i++) {
+    leg1_1Clockwise(-deg);
+    leg2_1Clockwise(-deg);
+    leg3_1Clockwise(-deg);
+    leg4_1Clockwise(-deg);
+    updateServos();
+  }
+  for(int i = 0; i < 45; i++) {
+      leg1_1Clockwise(deg);
+      updateServos();
+  }  
+  for(int i = 0; i < 45; i++) {
+      leg3_1Clockwise(deg);
+      updateServos();
+  }  
+
+  for(int i = 0; i < 45; i++) {
+      leg2_1Clockwise(deg);
+      updateServos();
+  }  
+    
+  for(int i = 0; i < 45; i++) {
+      leg4_1Clockwise(deg);
+      updateServos();
+  }      
 }
 
