@@ -54,11 +54,98 @@ void upDownTest() {
    downTest();
 }
 
+void clockWiseTest() {
+  for(int i = 0; i < 45; i += 2) {
+    leg1_1ClockWise(1);
+    leg2_1ClockWise(1);
+    leg3_1ClockWise(1);
+    leg4_1ClockWise(1);
+  }
+  for(int i = 0; i < 45; i += 2) {
+    leg1_1ClockWise(-1);
+    leg2_1ClockWise(-1);
+    leg3_1ClockWise(-1);
+    leg4_1ClockWise(-1);
+  }  
+}
+
+void counterClockWiseTest() {
+  for(int i = 0; i < 45; i += 2) {
+    leg1_1ClockWise(-1);
+    leg2_1ClockWise(-1);
+    leg3_1ClockWise(-1);
+    leg4_1ClockWise(-1);
+  }
+  for(int i = 0; i < 45; i += 2) {
+    leg1_1ClockWise(1);
+    leg2_1ClockWise(1);
+    leg3_1ClockWise(1);
+    leg4_1ClockWise(1);
+  }  
+}
+
+void forerakeTest() {
+  for(int i = 0; i < 30; i += 2) {
+    leg1_1ClockWise(1);
+    leg2_1ClockWise(1);
+    leg3_1ClockWise(-1);
+    leg4_1ClockWise(-1);
+  }
+  for(int i = 0; i < 30; i += 2) {
+    leg1_1ClockWise(-1);
+    leg2_1ClockWise(-1);
+    leg3_1ClockWise(1);
+    leg4_1ClockWise(1);
+  }    
+}
+
+
+void backrakeTest() {
+  for(int i = 0; i < 30; i += 2) {
+    leg1_1ClockWise(-1);
+    leg2_1ClockWise(-1);
+    leg3_1ClockWise(1);
+    leg4_1ClockWise(1);
+  }      
+  for(int i = 0; i < 30; i += 2) {
+    leg1_1ClockWise(1);
+    leg2_1ClockWise(1);
+    leg3_1ClockWise(-1);
+    leg4_1ClockWise(-1);
+  }
+}
+
+void leg1_1ClockWise(int deg) {
+  degs[3][0] += deg;
+  updateServos();
+}
+
+void leg2_1ClockWise(int deg) {
+  degs[2][0] += deg;
+  updateServos();
+}
+
+void leg3_1ClockWise(int deg) {
+  degs[0][0] += deg;
+  updateServos();
+}
+
+void leg4_1ClockWise(int deg) {
+  degs[1][0] += deg;
+  updateServos();
+}
+
 void setup() {
   initServos();  
 }
 
 void loop() {
   upDownTest();
+  upTest();
+  clockWiseTest();  
+  counterClockWiseTest();
+  forerakeTest();
+  backrakeTest();
+  downTest();
 }
 
