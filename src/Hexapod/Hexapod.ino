@@ -13,22 +13,7 @@ int delayMillis = 1;
 
 void setup() {
   initServos();  
-//  
-//  leg1UpTest(1);
-//  leg1UpTest(-1);
-//  leg2UpTest(1);
-//  leg2UpTest(-1);
-//  leg3UpTest(1);
-//  leg3UpTest(-1);
-//  leg4UpTest(1);
-//  leg4UpTest(-1);  
-//  
   upTest(1);  
-//  
-//  clockwiseTest(1);  
-//  clockwiseTest(-1);
-//  clockwiseTest(-1);
-//  clockwiseTest(1);  
 }
 
 void loop() {
