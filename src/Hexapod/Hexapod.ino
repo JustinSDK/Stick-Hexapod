@@ -10,6 +10,11 @@ void loop() {
   for(int i = 0; i < 3; i++) { // up down 3 times
     hexapodUpTest(1); hexapodUpTest(-1);    
   }
+
+  for(int i = 0; i < 10; i++) {
+      forwardTest(1);
+  }
+  
   for(int i = 0; i < 3; i++) {  // lift legs 3 times
     leg1UpTest(1);  leg1UpTest(-1);
     leg2UpTest(1);  leg2UpTest(-1);
@@ -69,4 +74,15 @@ void turnRightTest(int deg) {
   legClockwise(leg2_1Clockwise,  multipleDeg);
   legClockwise(leg4_1Clockwise,  multipleDeg); 
 }
+
+void forwardTest(int deg) {
+  int multipleDeg = deg * 2;  
+  legClockwise(leg4_1Clockwise,  multipleDeg);
+  legClockwise(leg3_1Clockwise,  multipleDeg);  
+  legClockwise(leg2_1Clockwise,  -multipleDeg);  
+  legClockwise(leg1_1Clockwise,  -multipleDeg);    
+  forLoop(45, hexapodForerake, deg);
+}
+
+
 
