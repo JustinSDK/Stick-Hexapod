@@ -64,20 +64,9 @@ void turnRightTest(int deg) {
   // leg one by one
   int multipleDeg = deg * 2;
   
-  leg1Up(-15);
-  forLoop(22, leg1_1Clockwise, multipleDeg);
-  leg1Up(15);
-
-  leg3Up(-15);
-  forLoop(22, leg3_1Clockwise, multipleDeg);
-  leg3Up(15);
-  
-  leg2Up(-15);
-  forLoop(22, leg2_1Clockwise, multipleDeg);
-  leg2Up(15);
-    
-  leg4Up(-15);
-  forLoop(22, leg4_1Clockwise, multipleDeg);
-  leg4Up(15); 
+  legClockwise(leg1_1Clockwise,  multipleDeg);
+  legClockwise(leg3_1Clockwise,  multipleDeg);
+  legClockwise(leg2_1Clockwise,  multipleDeg);
+  legClockwise(leg4_1Clockwise,  multipleDeg); 
 }
 

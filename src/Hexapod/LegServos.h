@@ -36,3 +36,4 @@ void leg2_1Clockwise(int deg);
 void leg3_1Clockwise(int deg);
 void leg4_1Clockwise(int deg);
 
+void legClockwise(void (*legClockwise)(int), int deg);
