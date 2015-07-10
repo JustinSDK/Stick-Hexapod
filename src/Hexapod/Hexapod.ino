@@ -13,12 +13,12 @@ int delayMillis = 1;
 
 void setup() {
   initServos();  
-  upTest(1);  
+  hexapodUpTest(1);  
 }
 
 void loop() {
   for(int i = 0; i < 3; i++) { // up down 3 times
-    upTest(1); upTest(-1);    
+    hexapodUpTest(1); hexapodUpTest(-1);    
   }
   for(int i = 0; i < 3; i++) {  // lift legs 3 times
     leg1UpTest(1);  leg1UpTest(-1);
@@ -55,162 +55,179 @@ void updateServos() {
   }
 }
 
-void leg1_1Clockwise(int deg) {
+void forLoop(int to,  void (*fn)(int), int arg) {
+  for(int i = 0; i < to; i++) {
+    fn(arg);
+  }
+}
+
+// servo setup
+
+void leg1_1ClockwiseSet(int deg) {
   degs[3][0] += deg;
 }
 
-void leg2_1Clockwise(int deg) {
+void leg2_1ClockwiseSet(int deg) {
   degs[2][0] += deg;
 }
 
-void leg3_1Clockwise(int deg) {
+void leg3_1ClockwiseSet(int deg) {
   degs[0][0] += deg;
 }
 
-void leg4_1Clockwise(int deg) {
+void leg4_1ClockwiseSet(int deg) {
   degs[1][0] += deg;
 }
 
-void leg1_2Down(int deg) {
+void leg1_2DownSet(int deg) {
   degs[3][1] += deg;
 }
 
-void leg2_2Down(int deg) {
+void leg2_2DownSet(int deg) {
   degs[2][1] += deg;
 }
 
-void leg3_2Down(int deg) {
+void leg3_2DownSet(int deg) {
   degs[0][1] -= deg;
 }
 
-void leg4_2Down(int deg) {
+void leg4_2DownSet(int deg) {
   degs[1][1] -= deg;
 }
 
-void leg1_3Down(int deg) {
+void leg1_3DownSet(int deg) {
   degs[3][2] += deg;
 }
 
-void leg2_3Down(int deg) {
+void leg2_3DownSet(int deg) {
   degs[2][2] += deg;
 }
 
-void leg3_3Down(int deg) {
+void leg3_3DownSet(int deg) {
   degs[0][2] -= deg;
 }
 
-void leg4_3Down(int deg) {
+void leg4_3DownSet(int deg) {
   degs[1][2] -= deg;
 }
 
+// basic movement
+
+void leg1Up(int deg) {
+  leg1_2DownSet(deg); leg1_3DownSet(deg); 
+  updateServos();
+}
+
+void leg2Up(int deg) {
+  leg2_2DownSet(deg); leg2_3DownSet(deg); 
+  updateServos();
+}
+
+void leg3Up(int deg) {
+  leg3_2DownSet(deg); leg3_3DownSet(deg); 
+  updateServos();
+}
+
+void leg4Up(int deg) {
+  leg4_2DownSet(deg); leg4_3DownSet(deg); 
+  updateServos();
+}
+
+void hexapodUp(int deg) {
+  leg1_2DownSet(deg); leg2_2DownSet(deg); leg3_2DownSet(deg); leg4_2DownSet(deg);
+  leg1_3DownSet(deg); leg2_3DownSet(deg); leg3_3DownSet(deg); leg4_3DownSet(deg);
+  updateServos();
+}
+
+void hexapodClockwise(int deg) {
+  leg1_1ClockwiseSet(deg);
+  leg2_1ClockwiseSet(deg);
+  leg3_1ClockwiseSet(deg);
+  leg4_1ClockwiseSet(deg);
+  updateServos();
+}
+
+void hexapodForerake(int deg) {
+  leg1_1ClockwiseSet(deg);
+  leg2_1ClockwiseSet(deg);
+  leg3_1ClockwiseSet(-deg);
+  leg4_1ClockwiseSet(-deg);
+  updateServos();
+}
+
+
+void leg1_1Clockwise(int deg) {
+  leg1_1ClockwiseSet(deg);
+  updateServos();
+}
+
+void leg2_1Clockwise(int deg) {
+  leg2_1ClockwiseSet(deg);
+  updateServos();
+}
+
+void leg3_1Clockwise(int deg) {
+  leg3_1ClockwiseSet(deg);
+  updateServos();
+}
+
+void leg4_1Clockwise(int deg) {
+  leg4_1ClockwiseSet(deg);
+  updateServos();
+}
+
+// for testing
+
 void leg1UpTest(int deg) {
-  for(int i = 0; i < 45; i++) {
-    leg1_2Down(deg); leg1_3Down(deg); 
-    updateServos();
-  }  
+  forLoop(45, leg1Up, deg);
 }
 
 void leg2UpTest(int deg) {
-  for(int i = 0; i < 45; i++) {
-    leg2_2Down(deg); leg2_3Down(deg); 
-    updateServos();
-  }  
+  forLoop(45, leg2Up, deg);
 }
 
 void leg3UpTest(int deg) {
-  for(int i = 0; i < 45; i++) {
-    leg3_2Down(deg); leg3_3Down(deg); 
-    updateServos();
-  }  
+  forLoop(45, leg3Up, deg);
 }
 
 void leg4UpTest(int deg) {
-  for(int i = 0; i < 45; i++) {
-    leg4_2Down(deg); leg4_3Down(deg); 
-    updateServos();
-  }  
+  forLoop(45, leg4Up, deg);
 }
 
-void upTest(int deg) {
-  for(int i = 0; i < 45; i++) {
-    leg1_2Down(deg); leg2_2Down(deg); leg3_2Down(deg); leg4_2Down(deg);
-    leg1_3Down(deg); leg2_3Down(deg); leg3_3Down(deg); leg4_3Down(deg);
-    updateServos();
-  }  
+void hexapodUpTest(int deg) {
+  forLoop(45, hexapodUp, deg);
 }
 
-void clockwiseTest(int deg) {
-  for(int i = 0; i < 45; i++) {
-    leg1_1Clockwise(deg);
-    leg2_1Clockwise(deg);
-    leg3_1Clockwise(deg);
-    leg4_1Clockwise(deg);
-    updateServos();
-  }
-  for(int i = 0; i < 45; i++) {
-    leg1_1Clockwise(-deg);
-    leg2_1Clockwise(-deg);
-    leg3_1Clockwise(-deg);
-    leg4_1Clockwise(-deg);
-    updateServos();    
-  }  
+void hexapodClockwiseTest(int deg) {
+  forLoop(45, hexapodClockwise, deg);
+  forLoop(45, hexapodClockwise, -deg);
 }
 
-void forerakeTest(int deg) {
-  for(int i = 0; i < 30; i++) {
-    leg1_1Clockwise(deg);
-    leg2_1Clockwise(deg);
-    leg3_1Clockwise(-deg);
-    leg4_1Clockwise(-deg);
-    updateServos();    
-  }
-  for(int i = 0; i < 30; i++) {
-    leg1_1Clockwise(-deg);
-    leg2_1Clockwise(-deg);
-    leg3_1Clockwise(deg);
-    leg4_1Clockwise(deg);
-    updateServos();    
-  }    
+void hexapodForerakeTest(int deg) {
+  forLoop(30, hexapodForerake, deg);
+  forLoop(30, hexapodForerake, -deg);
 }
 
 void turnRightTest(int deg) {
-  for(int i = 0; i < 45; i++) {
-    leg1_1Clockwise(-deg);
-    leg2_1Clockwise(-deg);
-    leg3_1Clockwise(-deg);
-    leg4_1Clockwise(-deg);
-    updateServos();
-  }
+  forLoop(45, hexapodClockwise, -deg);
+  
   // leg one by one
   int multipleDeg = deg * 2;
-  int absMultipleDeg = abs(multipleDeg);
   
-  leg1_2Down(-15); leg1_3Down(-15); 
-  for(int i = 0; i < 45; i += absMultipleDeg) {
-      leg1_1Clockwise(multipleDeg);
-      updateServos();
-  }  
-  leg1_2Down(15); leg1_3Down(15); 
+  leg1Up(-15);
+  forLoop(22, leg1_1Clockwise, multipleDeg);
+  leg1Up(15);
 
-  leg3_2Down(-15); leg3_3Down(-15);   
-  for(int i = 0; i < 45; i += absMultipleDeg) {
-      leg3_1Clockwise(multipleDeg);
-      updateServos();
-  }  
-  leg3_2Down(15); leg3_3Down(15); 
+  leg3Up(-15);
+  forLoop(22, leg3_1Clockwise, multipleDeg);
+  leg3Up(15);
   
-  leg2_2Down(-15); leg2_3Down(-15); 
-  for(int i = 0; i < 45; i += absMultipleDeg) {
-      leg2_1Clockwise(multipleDeg);
-      updateServos();
-  } 
-  leg2_2Down(15); leg2_3Down(15);  
+  leg2Up(-15);
+  forLoop(22, leg2_1Clockwise, multipleDeg);
+  leg2Up(15);
     
-  leg4_2Down(-15); leg4_3Down(-15); 
-  for(int i = 0; i < 45; i += absMultipleDeg) {
-      leg4_1Clockwise(multipleDeg);
-      updateServos();
-  } 
-  leg4_2Down(15); leg4_3Down(15);   
+  leg4Up(-15);
+  forLoop(22, leg4_1Clockwise, multipleDeg);
+  leg4Up(15); 
 }
 
