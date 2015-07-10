@@ -81,7 +81,7 @@ void forwardTest(int deg) {
   legClockwise(leg3_1Clockwise,  multipleDeg);  
   legClockwise(leg2_1Clockwise,  -multipleDeg);  
   legClockwise(leg1_1Clockwise,  -multipleDeg);    
-  forLoop(45, hexapodForerake, deg);
+  forLoop(46, hexapodForerake, deg);
 }
 
 

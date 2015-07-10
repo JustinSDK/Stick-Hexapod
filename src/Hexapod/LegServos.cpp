@@ -151,8 +151,8 @@ void leg4_1Clockwise(int deg) {
   updateServos();
 }
 
-void legClockwise(void (*legClockwise)(int), int deg) {
+void legClockwise(void (*legN_1)(int), int deg) {
   leg1Up(-15);
-  forLoop(22, legClockwise, deg);
+  forLoop(23, legN_1, deg);
   leg1Up(15);  
 }
