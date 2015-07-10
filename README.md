@@ -4,7 +4,11 @@
 
 ![廢材四足機器人](picture2.jpg)
 
-用飛機木、冰棒棍、竹筷、美工刀、保麗龍膠修修補補而成，程式還在撰寫中 …
+用飛機木、冰棒棍、竹筷、美工刀、保麗龍膠修修補補而成 …
+
+[![廢材四足機器人轉向測試](picture3.jpg)](https://www.youtube.com/watch?v=Sq3oHFkE5Uk)
+
+前進、後退方式還有待加強 … 
 
 [![廢材四足機器人](picture.jpg)](https://www.youtube.com/watch?v=mxfnD08Qb5k)
 
