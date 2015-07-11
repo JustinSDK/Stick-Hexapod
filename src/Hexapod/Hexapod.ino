@@ -4,38 +4,43 @@
 void setup() {
   initServos();  
   hexapodUpTest(1);  
+  leg1LiftTest(1);  
+  leg3LiftTest(1);      
 }
 
 void loop() {
-  for(int i = 0; i < 3; i++) { // up down 3 times
-    hexapodUpTest(1); hexapodUpTest(-1);    
-  }
-
-  hexapodClockwiseTest(1);
-  hexapodClockwiseTest(-1);
-  
-  for(int i = 0; i < 3; i++) { // forward 3 times
-      forwardTest(1);
-  }
-
-  for(int i = 0; i < 2; i++) {  // lift legs 2 times
-    leg1UpTest(1);  leg1UpTest(-1);
-    leg2UpTest(1);  leg2UpTest(-1);
-    leg3UpTest(1);  leg3UpTest(-1);
-    leg4UpTest(1);  leg4UpTest(-1);    
-  }
-  
-  for(int i = 0; i < 3; i++) { // back 3 times
-      forwardTest(-1);
-  }  
-  
-  for(int i = 0; i < 3; i++) {  // turn right 3 times
-    turnRightTest(1);
-  }
-  
-  for(int i = 0; i < 3; i++) {  // turn left 3 times
-    turnRightTest(-1);
-  }
+  leg1LiftTest(1);  
+  leg3LiftTest(1);     
+//  
+//  for(int i = 0; i < 3; i++) { // up down 3 times
+//    hexapodUpTest(1); hexapodUpTest(-1);    
+//  }
+//
+//  hexapodClockwiseTest(1);
+//  hexapodClockwiseTest(-1);
+//  
+//  for(int i = 0; i < 3; i++) { // forward 3 times
+//      forwardTest(1);
+//  }
+//
+//  for(int i = 0; i < 2; i++) {  // lift legs 2 times
+//    leg1UpTest(1);  leg1UpTest(-1);
+//    leg2UpTest(1);  leg2UpTest(-1);
+//    leg3UpTest(1);  leg3UpTest(-1);
+//    leg4UpTest(1);  leg4UpTest(-1);    
+//  }
+//  
+//  for(int i = 0; i < 3; i++) { // back 3 times
+//      forwardTest(-1);
+//  }  
+//  
+//  for(int i = 0; i < 3; i++) {  // turn right 3 times
+//    turnRightTest(1);
+//  }
+//  
+//  for(int i = 0; i < 3; i++) {  // turn left 3 times
+//    turnRightTest(-1);
+//  }
 }
 
 // for testing
@@ -89,3 +94,28 @@ void forwardTest(int deg) {
   legClockwise(leg2_1Clockwise,  -multipleDeg);  
   legClockwise(leg1_1Clockwise,  -multipleDeg);    
 }
+
+void leg1LiftTest(int deg) {
+  forLoop(60, leg2Up, 1);
+  forLoop(60, leg3Up, 1);
+  forLoop(60, leg4Up, -1);
+  forLoop(60, leg1Up, -1);  
+  forLoop(60, leg1Up, 1);
+  forLoop(60, leg4Up, 1);
+  forLoop(60, leg3Up, -1);
+  forLoop(60, leg2Up, -1);    
+}
+
+void leg3LiftTest(int deg) {
+  forLoop(60, leg1Up, 1);
+  forLoop(60, leg4Up, 1);
+  forLoop(60, leg2Up, -1);
+  forLoop(60, leg3Up, -1);  
+  forLoop(60, leg3Up, 1);
+  forLoop(60, leg2Up, 1);
+  forLoop(60, leg4Up, -1);
+  forLoop(60, leg1Up, -1);    
+}
+
+
+
