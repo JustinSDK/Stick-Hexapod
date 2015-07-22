@@ -11,7 +11,7 @@ int degs[4][3] = {
   {90, 0,   0}    // LEG1 - Servo 1, 2, 3
 };
 
-int delayMillis = 1;
+int microSeconds = 500;
 
 void initServos() {
   for(int i = 0; i < 4; i++) {
@@ -26,7 +26,7 @@ void updateServos() {
   for(int i = 0; i < 4; i++) {
     for(int j = 0; j < 3; j++) {
       servos[i][j].write(degs[i][j]); 
-      delay(delayMillis);
+      delayMicroseconds(microSeconds);
     }
   }
 }
@@ -123,14 +123,6 @@ void hexapodClockwise(int deg) {
   updateServos();
 }
 
-void hexapodForerake(int deg) {
-  leg1_1ClockwiseSet(deg);
-  leg2_1ClockwiseSet(deg);
-  leg3_1ClockwiseSet(-deg);
-  leg4_1ClockwiseSet(-deg);
-  updateServos();
-}
-
 void leg1_1Clockwise(int deg) {
   leg1_1ClockwiseSet(deg);
   updateServos();
@@ -151,8 +143,34 @@ void leg4_1Clockwise(int deg) {
   updateServos();
 }
 
-void legClockwise(void (*legN_1)(int), int deg) {
-  leg1Up(-15);
-  forLoop(23, legN_1, deg);
-  leg1Up(15);  
+void leg1Clockwise(int deg) {
+  forLoop(75, leg4Up, -1);
+  forLoop(60, leg1Up, -1);  
+  forLoop(45, leg1_1Clockwise, deg);
+  forLoop(60, leg1Up, 1);
+  forLoop(75, leg4Up, 1);  
+}
+
+void leg2Clockwise(int deg) {
+  forLoop(75, leg3Up, -1);
+  forLoop(60, leg2Up, -1);  
+  forLoop(45, leg2_1Clockwise, deg);  
+  forLoop(60, leg2Up, 1);
+  forLoop(75, leg3Up, 1);
+}
+
+void leg3Clockwise(int deg) {
+  forLoop(75, leg2Up, -1);
+  forLoop(60, leg3Up, -1);  
+  forLoop(45, leg3_1Clockwise, deg);  
+  forLoop(60, leg3Up, 1);
+  forLoop(75, leg2Up, 1); 
+}
+
+void leg4Clockwise(int deg) {
+  forLoop(75, leg1Up, -1);
+  forLoop(60, leg4Up, -1);  
+  forLoop(45, leg4_1Clockwise, deg);  
+  forLoop(60, leg4Up, 1);
+  forLoop(75, leg1Up, 1);    
 }

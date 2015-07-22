@@ -4,43 +4,20 @@
 void setup() {
   initServos();  
   hexapodUpTest(1);  
-  leg1LiftTest(1);  
-  leg3LiftTest(1);      
 }
 
 void loop() {
   leg1LiftTest(1);  
-  leg3LiftTest(1);     
-//  
-//  for(int i = 0; i < 3; i++) { // up down 3 times
-//    hexapodUpTest(1); hexapodUpTest(-1);    
-//  }
-//
-//  hexapodClockwiseTest(1);
-//  hexapodClockwiseTest(-1);
-//  
-//  for(int i = 0; i < 3; i++) { // forward 3 times
-//      forwardTest(1);
-//  }
-//
-//  for(int i = 0; i < 2; i++) {  // lift legs 2 times
-//    leg1UpTest(1);  leg1UpTest(-1);
-//    leg2UpTest(1);  leg2UpTest(-1);
-//    leg3UpTest(1);  leg3UpTest(-1);
-//    leg4UpTest(1);  leg4UpTest(-1);    
-//  }
-//  
-//  for(int i = 0; i < 3; i++) { // back 3 times
-//      forwardTest(-1);
-//  }  
-//  
-//  for(int i = 0; i < 3; i++) {  // turn right 3 times
-//    turnRightTest(1);
-//  }
-//  
-//  for(int i = 0; i < 3; i++) {  // turn left 3 times
-//    turnRightTest(-1);
-//  }
+  leg2LiftTest(1);    
+  leg3LiftTest(1);  
+  leg4LiftTest(1);
+
+  turnRightTest(1);
+  turnRightTest(-1);  
+  
+  for(int i = 0; i < 3; i++) {
+    forwardTest(1);
+  }
 }
 
 // for testing
@@ -62,7 +39,7 @@ void leg4UpTest(int deg) {
 }
 
 void hexapodUpTest(int deg) {
-  forLoop(45, hexapodUp, deg);
+  forLoop(90, hexapodUp, deg);
 }
 
 void hexapodClockwiseTest(int deg) {
@@ -73,49 +50,68 @@ void hexapodClockwiseTest(int deg) {
 void turnRightTest(int deg) {
   forLoop(45, hexapodClockwise, -deg);
   
-  // leg one by one
-  int multipleDeg = deg * 2;
-  legClockwise(leg1_1Clockwise,  multipleDeg);
-  legClockwise(leg3_1Clockwise,  multipleDeg);
-  legClockwise(leg2_1Clockwise,  multipleDeg);
-  legClockwise(leg4_1Clockwise,  multipleDeg); 
+  leg1Clockwise(deg);
+  
+  if(deg > 0) {
+    leg2Clockwise(deg);
+  } else {
+    leg3Clockwise(deg);
+ }    
+
+  leg4Clockwise(deg);   
+
+  if(deg > 0) {  
+    leg3Clockwise(deg);
+  } else {
+    leg2Clockwise(deg);
+  }
 }
 
 void forwardTest(int deg) {
-  int multipleDeg = deg * 2;  
-
-  legClockwise(leg4_1Clockwise,  multipleDeg);
-  legClockwise(leg3_1Clockwise,  multipleDeg);  
-  legClockwise(leg2_1Clockwise,  -multipleDeg);  
-  legClockwise(leg1_1Clockwise,  -multipleDeg);    
-  forLoop(92, hexapodForerake, deg);  
-  legClockwise(leg4_1Clockwise,  multipleDeg);
-  legClockwise(leg3_1Clockwise,  multipleDeg);    
-  legClockwise(leg2_1Clockwise,  -multipleDeg);  
-  legClockwise(leg1_1Clockwise,  -multipleDeg);    
+  leg2Clockwise(-deg);  
+  // right 2 back
+  for(int i = 0; i < 45; i++) {
+    leg1_1ClockwiseSet(deg);
+    leg2_1ClockwiseSet(deg);    
+    updateServos();
+  }
+  leg1Clockwise(-deg);
+  
+  leg4Clockwise(deg);   
+  // left 2 back
+  for(int i = 0; i < 45; i++) {
+    leg3_1ClockwiseSet(-deg);
+    leg4_1ClockwiseSet(-deg);    
+    updateServos();
+  }  
+  leg3Clockwise(deg);
 }
 
 void leg1LiftTest(int deg) {
-  forLoop(60, leg2Up, 1);
-  forLoop(60, leg3Up, 1);
-  forLoop(60, leg4Up, -1);
+  forLoop(75, leg4Up, -1);
   forLoop(60, leg1Up, -1);  
   forLoop(60, leg1Up, 1);
-  forLoop(60, leg4Up, 1);
-  forLoop(60, leg3Up, -1);
-  forLoop(60, leg2Up, -1);    
+  forLoop(75, leg4Up, 1);
+}
+
+void leg2LiftTest(int deg) {
+  forLoop(75, leg3Up, -1);
+  forLoop(60, leg2Up, -1);  
+  forLoop(60, leg2Up, 1);
+  forLoop(75, leg3Up, 1);
 }
 
 void leg3LiftTest(int deg) {
-  forLoop(60, leg1Up, 1);
-  forLoop(60, leg4Up, 1);
-  forLoop(60, leg2Up, -1);
+  forLoop(75, leg2Up, -1);
   forLoop(60, leg3Up, -1);  
   forLoop(60, leg3Up, 1);
-  forLoop(60, leg2Up, 1);
-  forLoop(60, leg4Up, -1);
-  forLoop(60, leg1Up, -1);    
+  forLoop(75, leg2Up, 1);    
 }
 
-
+void leg4LiftTest(int deg) {
+  forLoop(75, leg1Up, -1);
+  forLoop(60, leg4Up, -1);  
+  forLoop(60, leg4Up, 1);
+  forLoop(75, leg1Up, 1);    
+}
 

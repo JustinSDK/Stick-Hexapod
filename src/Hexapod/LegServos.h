@@ -29,11 +29,12 @@ void hexapodUp(int deg);
 
 void hexapodClockwise(int deg);
 
-void hexapodForerake(int deg);
-
 void leg1_1Clockwise(int deg);
 void leg2_1Clockwise(int deg);
 void leg3_1Clockwise(int deg);
 void leg4_1Clockwise(int deg);
 
-void legClockwise(void (*legClockwise)(int), int deg);
+void leg1Clockwise(int deg);
+void leg2Clockwise(int deg);
+void leg3Clockwise(int deg);
+void leg4Clockwise(int deg);
