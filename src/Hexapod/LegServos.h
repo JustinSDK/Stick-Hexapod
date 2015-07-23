@@ -1,40 +1,40 @@
+#define MICROSECONDS 500
+
 void initServos();
 void updateServos();
 void forLoop(int to,  void (*fn)(int), int arg);
 
-// servo setup
+// step servo degrees data 
 
-void leg1_1ClockwiseSet(int deg);
-void leg2_1ClockwiseSet(int deg);
-void leg3_1ClockwiseSet(int deg);
-void leg4_1ClockwiseSet(int deg);
+void joint1_1ClkDataStep(int deg);
+void joint2_1ClkDataStep(int deg);
+void joint3_1ClkDataStep(int deg);
+void joint4_1ClkDataStep(int deg);
 
-void leg1_2DownSet(int deg);
-void leg2_2DownSet(int deg);
-void leg3_2DownSet(int deg);
-void leg4_2DownSet(int deg);
-void leg1_3DownSet(int deg);
-void leg2_3DownSet(int deg);
-void leg3_3DownSet(int deg);
-void leg4_3DownSet(int deg);
+void joint1_2DownDataStep(int deg);
+void joint2_2DownDataStep(int deg);
+void joint3_2DownDataStep(int deg);
+void joint4_2DownDataStep(int deg);
 
-// basic movement
+void joint1_3DownDataStep(int deg);
+void joint2_3DownDataStep(int deg);
+void joint3_3DownDataStep(int deg);
+void joint4_3DownDataStep(int deg);
 
-void leg1Up(int deg);
-void leg2Up(int deg);
-void leg3Up(int deg);
-void leg4Up(int deg);
+// basic step action
 
-void hexapodUp(int deg);
+void leg1UpStep(int deg);
+void leg2UpStep(int deg);
+void leg3UpStep(int deg);
+void leg4UpStep(int deg);
 
-void hexapodClockwise(int deg);
+void hexapodUpStep(int deg);
 
-void leg1_1Clockwise(int deg);
-void leg2_1Clockwise(int deg);
-void leg3_1Clockwise(int deg);
-void leg4_1Clockwise(int deg);
+void hexapodClockwiseStep(int deg);
 
-void leg1Clockwise(int deg);
-void leg2Clockwise(int deg);
-void leg3Clockwise(int deg);
-void leg4Clockwise(int deg);
+void joint1_1ClkStep(int deg);
+void joint2_1ClkStep(int deg);
+void joint3_1ClkStep(int deg);
+void joint4_1ClkStep(int deg);
+
+
