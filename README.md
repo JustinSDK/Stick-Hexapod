@@ -18,4 +18,9 @@
 
 [![廢材四足機器人](picture.jpg)](https://www.youtube.com/watch?v=ZpO9VWxu_0o)
 
+製作方式說明：
+
+- [廢材四足機器人（一）修修補補成廢材](http://openhome.cc/Gossip/CodeData/StickHexapod/StickHexapod1.html)
+- ...
+
 [http://openhome.cc](http://openhome.cc)
