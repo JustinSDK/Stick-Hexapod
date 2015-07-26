@@ -21,6 +21,7 @@
 製作方式說明：
 
 - [廢材四足機器人（一）修修補補成廢材](http://openhome.cc/Gossip/CodeData/StickHexapod/StickHexapod1.html)
+- [廢材四足機器人（二）電路連接、靜態平行與足態設計](http://openhome.cc/Gossip/CodeData/StickHexapod/StickHexapod2.html)
 - ...
 
 [http://openhome.cc](http://openhome.cc)
