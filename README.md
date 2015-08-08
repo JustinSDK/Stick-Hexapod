@@ -16,7 +16,7 @@
   - 原型擴充板 x 1（如果你要直接把線路焊在一起就不用）
   - 一些電線
 
-[![廢材四足機器人](picture.jpg)](https://www.youtube.com/watch?v=ZpO9VWxu_0o)
+[![廢材四足機器人](picture.jpg)](https://www.youtube.com/watch?v=IsQaMRlMKro)
 
 製作方式說明：
 
