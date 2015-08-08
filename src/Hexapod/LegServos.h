@@ -1,4 +1,4 @@
-#define MICROSECONDS 500
+#define MICROSECONDS 250
 
 void initServos();
 void updateServos();
