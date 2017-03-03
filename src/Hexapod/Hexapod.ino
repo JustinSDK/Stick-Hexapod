@@ -13,6 +13,11 @@ void setup() {
 }
 
 void loop() {
+  for(int i = 0; i < 3; i++) {
+    hexapod(DOWN);  
+    hexapod(UP);  
+  }
+  
   hello();
 
   hexapodTurn(CLK);
